@@ -1,73 +1,168 @@
-# Welcome to your Lovable project
+# Project Kisan - Voice-first Multimodal Agronomy Assistant
 
-## Project info
+A Progressive Web App (PWA) designed for Kannada-speaking smallholder farmers, featuring voice-first interaction, camera-based disease diagnosis, market price lookup, and government scheme information.
 
-**URL**: https://lovable.dev/projects/bf594e67-08db-46e9-a9fa-6452558f7855
+## 🌾 Features
 
-## How can I edit this code?
+- **🎙️ Voice Query**: Voice-powered agricultural assistance in Kannada
+- **📸 Camera Diagnosis**: AI-powered crop disease detection and remedies
+- **📊 Market Prices**: Real-time crop pricing from local markets
+- **🏛️ Government Schemes**: Simplified access to agricultural subsidies and schemes
+- **📱 PWA Support**: Works offline with cached data
+- **🌍 Offline-first**: Last-known prices and FAQs cached locally
 
-There are several ways of editing your application.
+## 🚀 Quick Start
 
-**Use Lovable**
+### Frontend Setup
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/bf594e67-08db-46e9-a9fa-6452558f7855) and start prompting.
+```bash
+# Install dependencies
+npm install
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
+
+# Build for production  
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+### Environment Variables
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Create a `.env` file in the project root:
 
-**Use GitHub Codespaces**
+```env
+# Required for production features
+VITE_FIREBASE_API_KEY=your_firebase_api_key
+VITE_FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=your_project_id
+VITE_FIREBASE_STORAGE_BUCKET=your_project.appspot.com
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+# Backend API URL (when implemented)
+VITE_API_BASE_URL=http://localhost:3001/api
 
-## What technologies are used for this project?
+# Demo mode (set to 'true' for testing without AI services)
+VITE_DEMO_MODE=true
+```
 
-This project is built with:
+### Backend Setup (Coming Soon)
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The backend will be implemented with Node.js/Express and include:
 
-## How can I deploy this project?
+```bash
+# Backend structure (to be implemented)
+backend/
+├── src/
+│   ├── routes/
+│   │   ├── upload.js       # Image upload to Firebase
+│   │   ├── diagnose.js     # Vertex AI disease detection
+│   │   ├── stt.js         # Speech-to-text
+│   │   ├── tts.js         # Text-to-speech  
+│   │   ├── price.js       # Market price API
+│   │   └── scheme.js      # Government schemes RAG
+│   ├── services/
+│   │   ├── vertexai.js    # Vertex AI integration
+│   │   ├── firebase.js    # Firebase services
+│   │   └── agmarknet.js   # Market price scraping
+│   └── app.js
+├── package.json
+└── README.md
 
-Simply open [Lovable](https://lovable.dev/projects/bf594e67-08db-46e9-a9fa-6452558f7855) and click on Share -> Publish.
+# Backend environment variables needed:
+VERTEX_API_KEY=your_vertex_ai_key
+FIREBASE_SERVICE_ACCOUNT=path_to_service_account.json
+AGMARKNET_API_URL=https://agmarknet.gov.in/api
+```
 
-## Can I connect a custom domain to my Lovable project?
+## 🎨 Design System
 
-Yes, you can!
+The app uses an earth-inspired agricultural theme:
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+- **Primary**: Deep forest green (`hsl(145 60% 25%)`)
+- **Success**: Fresh crop green (`hsl(120 65% 45%)`)  
+- **Accent**: Golden harvest yellow (`hsl(43 85% 65%)`)
+- **Warning**: Sunset orange (`hsl(25 85% 65%)`)
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+## 📱 PWA Features
+
+- ✅ Offline caching with Service Worker
+- ✅ App manifest for installation
+- ✅ Responsive design for mobile-first usage
+- ✅ Touch-friendly interface with large buttons
+- ✅ Local storage for market prices and FAQs
+
+## 🌐 Language Support
+
+- **Primary**: Kannada (ಕನ್ನಡ) - Native interface
+- **Secondary**: English - For technical terms and fallbacks
+
+## 🔧 Technical Stack
+
+### Frontend
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling  
+- **shadcn/ui** components
+- **Lucide React** for icons
+- **React Query** for API state management
+- **Vite** for build tooling
+
+### Backend (Planned)
+- **Node.js** with Express
+- **Firebase** (Auth, Storage, Firestore)
+- **Google Vertex AI** (Vision, Gemini, STT, TTS)
+- **AgMarkNet/eNAM** APIs for price data
+
+## 🎯 Demo Mode
+
+The app includes a demo mode for testing without external API dependencies:
+
+- Set `VITE_DEMO_MODE=true` in environment
+- Returns predefined Kannada responses
+- Simulates AI analysis with realistic delays
+- Perfect for development and demonstrations
+
+## 🚀 Deployment
+
+### Frontend Deployment
+```bash
+# Build the app
+npm run build
+
+# Deploy to any static hosting service
+# (Netlify, Vercel, Firebase Hosting, etc.)
+```
+
+### Firebase Setup (Required for full features)
+1. Create a new Firebase project
+2. Enable Authentication, Firestore, and Storage
+3. Add your Firebase config to environment variables
+4. Set up storage rules for image uploads
+
+## 🔒 Security Notes
+
+- Image uploads are processed server-side only
+- API keys are never exposed to the frontend
+- All AI processing happens on the backend
+- Rate limiting implemented for API endpoints
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Contact the development team
+- Check the [documentation](docs/) for detailed guides
+
+---
+
+**Project Kisan** - Empowering farmers with technology 🌾

@@ -1,0 +1,21 @@
+{
+  "name": "Project Kisan - Agricultural Assistant",
+  "short_name": "Kisan",
+  "description": "Voice-first agricultural assistant for Kannada farmers",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2d5a3d",
+  "theme_color": "#2d5a3d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["agriculture", "productivity", "utilities"],
+  "lang": "kn-IN",
+  "scope": "/",
+  "related_applications": []
+}
